@@ -1,0 +1,22 @@
+{
+  "name": "Enome's Jungles Bundle",
+  "version": "0.0.0",
+  "description": "Personal Project structure for Jungles",
+  "main": "index.js",
+  "author": "Geert Pasteels",
+  "license": "BSD",
+  "dependencies": {
+    "jungles-middleware-frontend": "~1.1.0",
+    "jungles-data-postgres": "~2.0.1",
+    "jungles-components": "~1.0.0",
+    "jungles-validators": "~1.8.0",
+    "jungles-rest": "~1.1.2",
+    "jungles-files": "~1.0.0",
+    "jungles-errors": "~1.1.0",
+    "jungles-panel": "~1.3.1",
+    "express": "~3.1.0",
+    "stylus": "~0.32.1",
+    "nib": "~0.9.1",
+    "jade": "~0.28.2"
+  }
+}

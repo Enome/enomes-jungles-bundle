@@ -1,0 +1,25 @@
+doctype5
+
+html
+
+  head
+    title Jungles Postgres Bundle
+    link(href='/stylus/general.css', rel='stylesheet')
+    link(rel='shortcut icon', type='image/x-icon', href='favicon.ico')
+
+  body
+
+    .page
+
+      .nav
+        !{navigation(locals.tree, 0, 0, locals.current)}
+
+      .header
+
+      .content
+        block content
+
+    .footer Powered by <a href='https://github.com/Enome/jungles' target='_blank'>Jungles</a>
+
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js')
+    script(src='/js/main.js')
