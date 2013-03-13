@@ -27,13 +27,13 @@ git clone git://github.com/Enome/enomes-jungles-bundle.git
 cd enomes-jungles-bundle
 npm install
 vagrant up
-forever -w -c node.js
+forever -w -c node app.js
 ```
 
 One-liner
 
 ```sh
-git clone git://github.com/Enome/enomes-jungles-bundle.git && cd enomes-jungles-bundle && npm install && vagrant up && forever -w -c node.js
+git clone git://github.com/Enome/enomes-jungles-bundle.git && cd enomes-jungles-bundle && npm install && vagrant up && forever -w -c node app.js
 ```
 
 You can find the admin at /administrator
