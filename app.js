@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var stylus = require('stylus');
 var nib = require('nib');
+var jungles = require('jungles');
 
 // Express
 
@@ -25,7 +26,7 @@ app.use(express.static(__dirname + '/static/public'));
 
 // Data
 
-var data = require('jungles-data-postgres')({
+var data = jungles.data.postgres({
   database: 'jungles',
   user: 'jungles',
   password: '1234',
@@ -38,15 +39,15 @@ data.setup();
 
 // Rest
 
-var rest = require('jungles-rest').init({ data: data, types: require('./types'), });
+var rest = jungles.rest.init({ data: data, types: require('./types'), });
 app.use('/administrator/api', rest);
 
 
 // Panel
 
-var panel = require('jungles-panel').init({
+var panel = jungles.panel.init({
   url: '/administrator/api',
-  customize: [ require('jungles-components').upload ],
+  customize: [ jungles.components.upload ],
 });
 
 app.use('/administrator', panel);
@@ -54,24 +55,24 @@ app.use('/administrator', panel);
 
 // Files
 
-var files = require('jungles-files');
+var files = jungles.files;
 app.use('/files', files(__dirname + '/media'));
 
 
 // Helpers
 
-require('jungles-helpers-frontend').init(app);
+jungles.helpers.frontend.init(app);
 require('./helpers')(app);
 
 
 // Front-end
 
-app.get(':path(*)', require('jungles-middleware-frontend')(rest));
+app.get(':path(*)', jungles.middleware.frontend(rest));
 
 
 // Errors
 
-require('jungles-errors').init(app);
+jungles.errors.init(app);
 
 
 // Create & start server

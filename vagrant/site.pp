@@ -20,3 +20,8 @@ pg_user {'vagrant':
   superuser => true,
   require => Service['postgresql-system-9.1'],
 }
+
+exec { 'psql -U jungles -d jungles < /vagrant/vagrant/dump.sql':
+  require => Pg_database['jungles'],
+  path => "/usr/bin",
+}

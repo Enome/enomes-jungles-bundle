@@ -4,10 +4,10 @@ dump_local:
 	@vagrant ssh -c 'pg_dump jungles' > vagrant/dump.sql
 
 dump_online:
-	@ssh root@$(IP) 'sudo -u postgres pg_dump sproutsheet' > vagrant/dump.sql
+	@ssh root@$(IP) 'sudo -u postgres pg_dump jungles' > vagrant/dump.sql
 
-dump_media:
-	@SCP root@$(IP) media
+download_media:
+	@scp -r root@$(IP):/var/www/jungles/current/media/ ./
 
 setup_server:
-	@ssh root@$(IP) 'apt-get install puppet && curl https://raw.github.com/Enome/puppet/master/jungles.pp | puppet apply'
+	@ssh root@$(IP) 'apt-get install puppet && puppet module install --force akumria/postgresql && curl https://raw.github.com/Enome/puppet/master/jungles.pp | puppet apply'
