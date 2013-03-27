@@ -1,4 +1,4 @@
-var validators = require('jungles-validators');
+var validators = require('jungles').validators;
 
 var types = [
   {

@@ -3,9 +3,13 @@ doctype5
 html
 
   head
+    title= (locals.title || locals.current.name) + ' - Jungles Postgres Bundle'
     title Jungles Postgres Bundle
     link(href='/stylus/general.css', rel='stylesheet')
     link(rel='shortcut icon', type='image/x-icon', href='favicon.ico')
+
+    if locals.current.description
+      meta(content=locals.current.description, name='description')
 
   body
 
