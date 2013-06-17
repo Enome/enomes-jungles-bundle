@@ -7,10 +7,11 @@ var jungles = require('jungles');
 // Express
 
 var app = express();
-
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.locals.pretty = true;
+
+// Stylus
 
 app.use(stylus.middleware({
   src: __dirname + '/static/src',
@@ -20,8 +21,24 @@ app.use(stylus.middleware({
   }
 }));
 
+// Favicon
+
 app.use(express.favicon(__dirname + '/static/public/favicon.ico'));
+
+// Static
+
 app.use(express.static(__dirname + '/static/public'));
+
+// Cookies
+
+app.use(express.cookieParser());
+app.use(express.cookieSession({ secret: "IFohCiec4XeelaengobiCaichae2iedohR1ahHai6oagheifee" }));
+
+
+// Auth & Auth
+
+app.use('/administrator', jungles.auth.simple('/login', ['geert.pasteels@gmail.com']));
+app.use('/login', jungles.auth.persona());
 
 
 // Data
@@ -36,16 +53,15 @@ var data = jungles.data.postgres({
 
 data.setup();
 
-
 // Rest
 
-var rest = jungles.rest.init({ data: data, types: require('./types'), });
+var rest = jungles.rest({ data: data, types: require('./types'), });
 app.use('/administrator/api', rest);
 
 
 // Panel
 
-var panel = jungles.panel.init({
+var panel = jungles.panel({
   url: '/administrator/api',
   customize: [ jungles.components.upload ],
 });
@@ -61,7 +77,7 @@ app.use('/files', files(__dirname + '/media'));
 
 // Helpers
 
-jungles.helpers.frontend.init(app);
+jungles.helpers.frontend(app);
 require('./helpers')(app);
 
 
@@ -72,8 +88,7 @@ app.get(':path(*)', jungles.middleware.frontend(rest));
 
 // Errors
 
-jungles.errors.init(app);
-
+jungles.errors(app);
 
 // Create & start server
 

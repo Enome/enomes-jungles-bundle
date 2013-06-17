@@ -1,10 +1,30 @@
 var validators = require('jungles').validators;
 
 var types = [
+
+  {
+    name: 'root',
+    children: [ 'products', 'page' ],
+  },
+
+  {
+    name: 'products',
+    children: ['product'],
+    icon: {
+      name: 'icon-folder-open-alt',
+    }
+  },
+
+  {
+    name: 'product',
+    icon: {
+      name: 'icon-copy',
+    }
+  },
+
   {
     name: 'page',
     form: 'forms/page',
-    root: true,
     children: ['page'],
     schema: {
       title: [ validators.string() ],
@@ -13,6 +33,7 @@ var types = [
       files: [ validators.array() ]
     },
   },
+
 ];
 
 module.exports = types;

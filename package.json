@@ -6,10 +6,10 @@
   "author": "Geert Pasteels",
   "license": "BSD",
   "dependencies": {
-    "express": "~3.1.0",
     "stylus": "~0.32.1",
     "nib": "~0.9.1",
     "jade": "~0.28.2",
-    "jungles": "~1.0.0"
+    "jungles": "3.0.0",
+    "express": "~3.2.6"
   }
 }
