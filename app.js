@@ -61,11 +61,7 @@ app.use('/administrator/api', rest);
 
 // Panel
 
-var panel = jungles.panel({
-  url: '/administrator/api',
-  customize: [ jungles.components.upload ],
-});
-
+var panel = jungles.panel('/administrator/api');
 app.use('/administrator', panel);
 
 

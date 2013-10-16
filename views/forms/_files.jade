@@ -1,8 +1,8 @@
+h2 Files
 fieldset
-  legend Files
-
   label Files
-  upload(url='/files', ng-model='data.files')
+
+  <arrangeable-files selected='data.files' fileserver='"/files"'></arrangeable-files>
 
   label Show
   input(type='checkbox')
